@@ -5,24 +5,28 @@
 }
 
 input {
-    @include text;
     border: none;
-    border-bottom: 1px solid;
-    color: #939598;
     font-size:18px;
     letter-spacing: 1px;
-    margin-right:28px;
-    margin-top:75px;
-    padding-bottom: 14px;
     text-transform: uppercase;
+    width: 90%;
 }
 
 input:focus {
     outline:none;
 }
 
+.input-wrapper {
+    @include text;
+    border-bottom: 1px solid;
+    color: #939598;
+    padding-bottom: 14px;
+    display:inline-block;
+    margin-top:75px;
+    width: 100%;
+}
+
 fa-icon {
     position: absolute;
-    right: 10px;
-    bottom: 0px;
+    right: 0px;
 }

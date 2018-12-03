@@ -18,11 +18,15 @@ export class InputComponent {
     @Input()
     placeholder: string;
     @Input()
+    marginRight: string;
+    @Input()
     type: string;
     @Input()
-    validate: (value: string) => boolean;
-    @Input()
     valid: boolean;
+    @Input()
+    validate: (value: string) => boolean;
+    // @Input()
+    // width: string;
 
     faDizzy = faDizzy;
     faSmileBeam = faSmileBeam;
