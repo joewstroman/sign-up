@@ -1,27 +1,27 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<div>
+<div style="margin-left: 50px;width:479px;">
   <div>
       <div class="header">Start your 14 day free trial</div>
       <div>No credit card required</div>
   </div>
   <div>
-      <app-input name="name" placeholder="First Name" [validate]="validateName"></app-input>
-      <app-input name="surname" placeholder="Last Name" [validate]="validateName"></app-input>
+      <app-input (update)="register($event)" name="name" placeholder="First Name" [validate]="validateName"></app-input>
+      <app-input (update)="register($event)" name="surname" placeholder="Last Name" [validate]="validateName"></app-input>
   </div>
-  <app-input name="company" placeholder="Company Name" [validate]="validateName"></app-input>
+  <app-input (update)="register($event)" name="company" placeholder="Company Name" [validate]="validateName"></app-input>
   <div>
-    <app-input name="email" placeholder="Email" [validate]="validateEmail"></app-input>
+    <app-input (update)="register($event)" name="email" placeholder="Email" [validate]="validateEmail"></app-input>
   </div>
-  <app-input name="password" placeholder="Password" [validate]="validateName" type="password"></app-input>
+  <app-input (update)="register($event)" name="password" placeholder="Password" [validate]="validateName" type="password"></app-input>
   <div>
-    <app-input name="confirmation" placeholder="Confirm Password" [validate]="confirmPassword.bind(this)" type="password"></app-input>
+    <app-input (update)="register($event)" name="confirmation" placeholder="Confirm Password" [validate]="confirmPassword.bind(this)" type="password"></app-input>
   </div>
   <div style="margin-top:25px;">
-    <input name="checked" class="inline box" type="checkbox" checked="checked">
+    <input [(ngModel)]="tos" (ngModelChange)="validateTOS($event)" class="inline box" type="checkbox">
     <span>I agree to the terms of service</span>
   </div>
   <div style="margin-top:49px;">
-    <span (click)="submit()" class="submit">Sign Up</span>
+    <app-submit [(stateIsValid)]="stateIsValid" ></app-submit>
     <span (click)="cancel()">Cancel</span>
   </div>
 </div>

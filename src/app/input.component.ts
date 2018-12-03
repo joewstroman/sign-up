@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { faDizzy, faSmileBeam } from '@fortawesome/free-regular-svg-icons';
 import { Store } from '@ngrx/store';
 import { IAppState, UPDATE } from './store';
@@ -11,6 +11,7 @@ import { IAppState, UPDATE } from './store';
   })
 
 export class InputComponent {
+    @Output() update = new EventEmitter<string>();
     @Input()
     name: string;
     @Input()
@@ -18,7 +19,9 @@ export class InputComponent {
     @Input()
     type: string;
     @Input()
-    validate: () => boolean;
+    validate: (value: string) => boolean;
+    @Input()
+    valid: boolean;
 
     faDizzy = faDizzy;
     faSmileBeam = faSmileBeam;
@@ -29,6 +32,9 @@ export class InputComponent {
     }
 
     onChange(value: string) {
+        if (this.validate(value)) {
+            this.update.emit(this.name);
+        }
         this.store.dispatch({ type: UPDATE, payload: { [this.name]: value }});
     }
 }

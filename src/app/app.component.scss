@@ -6,7 +6,7 @@
     font-size: 20px;
     font-weight: 500;
     font-family: Roboto;
-    // display:block;
+    
 }
 
 div {
@@ -14,6 +14,7 @@ div {
 }
 
 .box {
+    margin-left: 0px;
     margin-top:0px;
     margin-right:9px;
     height:17px;
@@ -28,27 +29,9 @@ div {
     @include text;
     width: 479px;
     height: 42px;
-    opacity: 0.87;
     font-size: 36px;
+    margin-bottom: 10px;
     color: #000000;
-}
-
-input {
-    @include text;
-    border: none;
-    border-bottom: 1px solid;
-    color: #939598;
-    font-size:18px;
-    letter-spacing: 1px;
-    margin-right:28px;
-    margin-top:75px;
-    min-width: 200px;
-    padding-bottom: 14px;
-    text-transform: uppercase;
-}
-
-input:focus {
-    outline:none;
 }
 
 .submit {

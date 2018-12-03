@@ -5,10 +5,12 @@ import { InputModule } from './input.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
+import { SubmitComponent } from './submit.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SubmitComponent
   ],
   imports: [
     BrowserModule,

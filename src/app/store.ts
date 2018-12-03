@@ -2,6 +2,7 @@ import { Action } from '@ngrx/store';
 
 export interface IAppState {
     company: string;
+    confirmation: string;
     email: string;
     name: string;
     password: string;
@@ -18,6 +19,7 @@ export interface IPasswordAction extends Action {
 
 export const initialState = {
     company: '',
+    confirmation: '',
     email: '',
     name: '',
     password: '',
