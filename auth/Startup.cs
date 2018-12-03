@@ -26,9 +26,10 @@ namespace sign_up
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddEntityFrameworkInMemoryDatabase()
-              .AddDbContext<UserDbContext>(opt => opt.UseInMemoryDatabase("All"));
-
+            services.AddEntityFrameworkNpgsql()
+              .AddDbContext<UserDbContext>(opt => opt.UseNpgsql("Host=localhost;Port=5432;Database=applicationdb;Username=test;Password=testpw"))
+              .AddDbContext<UserInfoContext>(opt => opt.UseNpgsql("Host=localhost;Port=5432;Database=applicationdb;Username=test;Password=testpw"));
+      
             services.AddIdentity<IdentityUser, IdentityRole>()
                     .AddEntityFrameworkStores<UserDbContext>();
 

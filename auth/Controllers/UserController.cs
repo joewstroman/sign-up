@@ -8,9 +8,9 @@ namespace sign_up.Controllers
   [Route("api/[controller]")]
   public class UserController : Controller
   {
-    private readonly UserContext _context;
+    private readonly UserInfoContext _context;
 
-    public UserController(UserContext context)
+    public UserController(UserInfoContext context)
     {
       _context = context;
 
