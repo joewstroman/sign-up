@@ -9,19 +9,19 @@ import { IAppState } from './store';
   })
 
 export class SubmitComponent {
-    store: Store<IAppState>;
+    state$: IAppState;
     @Input()
     stateIsValid: boolean;
 
     constructor(store: Store<IAppState>) {
-        this.store = store;
-        // this.store.subscribe((state: IAppState) => {
-        //     console.log(state)
-        // });
+        store.subscribe((state: IAppState) => {
+            this.state$ = state;
+        });
     }
 
     submit() {
-        console.log('submitting');
-        console.log(this.stateIsValid);
+        if (this.stateIsValid) {
+            // Send state to db with service
+        }
     }
 }
