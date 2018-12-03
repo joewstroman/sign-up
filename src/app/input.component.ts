@@ -1,5 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faDizzy, faSmileBeam } from '@fortawesome/free-regular-svg-icons';
+import { Store } from '@ngrx/store';
+import { IAppState, UPDATE } from './store';
+// import { IAppState } from './store';
 
 @Component({
     selector: 'app-input',
@@ -8,8 +11,6 @@ import { faDizzy, faSmileBeam } from '@fortawesome/free-regular-svg-icons';
   })
 
 export class InputComponent {
-    @Output() update = new EventEmitter<{ value: string }>();
-
     @Input()
     name: string;
     @Input()
@@ -21,9 +22,13 @@ export class InputComponent {
 
     faDizzy = faDizzy;
     faSmileBeam = faSmileBeam;
+    store: Store<IAppState>;
+
+    constructor(store: Store<IAppState>) {
+        this.store = store;
+    }
 
     onChange(value: string) {
-        console.log('this is changing');
-        this.update.emit({ value });
+        this.store.dispatch({ type: UPDATE, payload: { [this.name]: value }});
     }
 }

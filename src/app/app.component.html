@@ -12,7 +12,7 @@
   <div>
     <app-input name="email" placeholder="Email" [validate]="validateEmail"></app-input>
   </div>
-  <app-input name="password" (update)="updatePassword($event)" placeholder="Password" [validate]="validateName" type="password"></app-input>
+  <app-input name="password" placeholder="Password" [validate]="validateName" type="password"></app-input>
   <div>
     <app-input name="confirmation" placeholder="Confirm Password" [validate]="confirmPassword.bind(this)" type="password"></app-input>
   </div>
