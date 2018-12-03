@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { validate } from 'email-validator';
+import { validate as emailValidator } from 'email-validator';
 import { Observable } from 'rxjs';
 import { IAppState } from './store';
 
@@ -25,8 +25,10 @@ export class AppComponent {
     return value === this.password;
   }
 
+  // For consistency validateEmail is defined as a function
+  // instead of being assigned to the imported email validator
   validateEmail(email: string) {
-    return validate(email);
+    return emailValidator(email);
   }
 
   validateName(name: string) {
