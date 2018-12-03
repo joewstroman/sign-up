@@ -1,5 +1,0 @@
-<input [(ngModel)]="value" type="{{type}}" class="inline" placeholder="{{placeholder}}" (ngModelChange)="onChange($event)" />
-<span class="icon-box" *ngIf="value && value.length > 0">
-    <fa-icon *ngIf="validate(value)" [icon]="faSmileBeam"></fa-icon>
-    <fa-icon *ngIf="!validate(value)" [icon]="faDizzy"></fa-icon>
-</span>
