@@ -70,22 +70,27 @@ export class AppComponent {
 
   validatePassword(pass: string) {
     if (pass.length < 6) {
-      console.log('too short');
+      console.log('Must be at least 6 characters');
       return false;
     }
 
     if (!pass.match(/\d/)) {
-      console.log('no number');
+      console.log('Needs at least 1 number');
       return false;
     }
 
     if (!pass.match(/[A-Z]/)) {
-      console.log('no uppercase');
+      console.log('Needs at least 1 uppercase character');
       return false;
     }
 
     if (!pass.match(/[\W_]/)) {
-      console.log('no special');
+      console.log('Needs at least 1 special character');
+      return false;
+    }
+
+    if (!pass.match(/[a-z]/)) {
+      console.log('Needs at least 1 lowercase letter');
       return false;
     }
 
