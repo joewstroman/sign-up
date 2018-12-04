@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { validate as emailValidator } from 'email-validator';
-import { Observable } from 'rxjs';
-import { IAppState, initialState } from './store';
+import { Subject } from 'rxjs';
+import { IAppState, initialState, UPDATE } from './store';
 
 @Component({
   selector: 'app-root',
@@ -11,24 +11,27 @@ import { IAppState, initialState } from './store';
 })
 
 export class AppComponent {
-  state$: Observable<IAppState>;
+  store: Store<IAppState>;
+  clear: Subject<void>;
   password: string;
   propertyIsValid = {};
   stateIsValid = false;
+  tos: boolean;
 
   constructor(store: Store<IAppState>) {
-    this.state$ = store.select('form');
-    this.state$.subscribe( (state: IAppState) => {
+    this.store = store;
+    const state$ = store.select('form');
+
+    this.clear = new Subject();
+
+    state$.subscribe( (state: IAppState) => {
       this.password = state.password;
+      console.log(state);
     });
 
     Object.keys(initialState).map( (name: string) => {
       this.propertyIsValid[name] = false;
     });
-  }
-
-  confirmPassword(value: string) {
-    return value === this.password;
   }
 
   allPropertiesAreValid() {
@@ -38,6 +41,16 @@ export class AppComponent {
       }
     }
     return true;
+  }
+
+  cancel() {
+    this.tos = false;
+    this.validateTOS(this.tos);
+    this.clear.next();
+  }
+
+  confirmPassword(value: string) {
+    return value === this.password;
   }
 
   register({name, valid}: {name: string, valid: boolean} ) {
@@ -56,6 +69,7 @@ export class AppComponent {
   }
 
   validateTOS(checked: any) {
+    this.store.dispatch({ type: UPDATE, payload: { tos: checked }});
     this.register({name: 'tos', valid: checked});
   }
 }

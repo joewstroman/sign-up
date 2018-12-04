@@ -1,8 +1,8 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { faDizzy, faSmileBeam } from '@fortawesome/free-regular-svg-icons';
 import { Store } from '@ngrx/store';
-import { IAppState, UPDATE } from './store';
-// import { IAppState } from './store';
+import { Subject } from 'rxjs';
+import { initialState, IAppState, UPDATE } from './store';
 
 @Component({
     selector: 'app-input',
@@ -10,30 +10,32 @@ import { IAppState, UPDATE } from './store';
     styleUrls: ['./input.component.scss']
   })
 
-export class InputComponent {
+export class InputComponent implements OnInit {
     @Output() update = new EventEmitter<{name: string, valid: boolean}>();
 
-    @Input()
-    name: string;
-    @Input()
-    placeholder: string;
-    @Input()
-    marginRight: string;
-    @Input()
-    type: string;
-    @Input()
-    valid: boolean;
+    @Input() clear: Subject<void>;
+    @Input() name: string;
+    @Input() placeholder: string;
+    @Input() type: string;
+    @Input() valid: boolean;
+
     @Input()
     validate: (value: string) => boolean;
-    // @Input()
-    // width: string;
 
+    value: any;
     faDizzy = faDizzy;
     faSmileBeam = faSmileBeam;
     store: Store<IAppState>;
 
     constructor(store: Store<IAppState>) {
         this.store = store;
+    }
+
+    ngOnInit() {
+        this.clear.subscribe(() => {
+            this.value = initialState[this.name];
+            this.onChange(this.value);
+        });
     }
 
     onChange(value: string) {
