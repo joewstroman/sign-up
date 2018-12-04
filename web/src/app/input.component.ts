@@ -32,11 +32,9 @@ export class InputComponent implements OnInit {
 
     constructor(store: Store<IAppState>) {
         this.store = store;
-        console.log(this.type);
     }
 
     ngOnInit() {
-        console.log(this.type);
         this.type = (this.secret) ? 'password' : 'text';
         this.clear.subscribe(() => {
             this.value = initialState[this.name];
@@ -45,7 +43,6 @@ export class InputComponent implements OnInit {
     }
 
     changeInputType() {
-        console.log(this.type);
         this.type = (this.type === 'password') ? 'text' : 'password';
     }
 

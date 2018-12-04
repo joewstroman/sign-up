@@ -1,27 +1,31 @@
 import { Component, Input } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { IAppState } from './store';
+import { SignUpService } from './app.service';
 
 @Component({
     selector: 'app-submit',
     templateUrl: './submit.component.html',
-    styleUrls: ['./submit.component.scss']
+    styleUrls: ['./submit.component.scss'],
+    providers: [SignUpService]
   })
 
 export class SubmitComponent {
-    state$: IAppState;
+    state: IAppState;
     @Input()
     stateIsValid: boolean;
+    signUpService: SignUpService;
 
-    constructor(store: Store<IAppState>) {
-        store.subscribe((state: IAppState) => {
-            this.state$ = state;
+    constructor(signUpService: SignUpService, store: Store<IAppState>) {
+        store.select('form').subscribe((state: IAppState) => {
+            this.signUpService = signUpService;
+            this.state = state;
         });
     }
 
     submit() {
         if (this.stateIsValid) {
-            // Send state to db with service
+            this.signUpService.authenticateNewUser(this.state);
         }
     }
 }

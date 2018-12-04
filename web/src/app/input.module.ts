@@ -6,6 +6,7 @@ import { reducer } from './store';
 import { InputComponent } from './input.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { SignUpService } from './app.service';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,6 @@ import { CommonModule } from '@angular/common';
     StoreModule.forRoot({ form: reducer })
   ],
   exports: [InputComponent],
-  providers: [],
+  providers: [SignUpService],
 })
 export class InputModule { }
