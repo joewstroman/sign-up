@@ -1,21 +1,39 @@
 @import './app.component.scss';
 
-.icon-box {
-    position:absolute;
-    right: 0px;
-    width:50px;
-}
-
 input {
     border: none;
     font-size:18px;
     letter-spacing: 1px;
-    // text-transform: uppercase;
     width: 87%;
 }
 
 input:focus {
     outline:none;
+}
+
+.helper-text {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: text;
+    transition: all .4s ease;
+    position: absolute;
+}
+
+.input-focused {
+    font-size:13px;
+    letter-spacing: 0.7px;
+    top: -15px;
+}
+
+.input-not-focused {
+    font-size:18px;
+    top: 0px;
+}
+
+.icon-box {
+    position:absolute;
+    right: 0px;
+    width:50px;
 }
 
 .input-wrapper {

@@ -1,6 +1,7 @@
 <span style="position:relative;">
     <span class="input-wrapper">
-        <input [(ngModel)]="value" [(type)]="type" class="inline" [placeholder]="placeholder" (ngModelChange)="onChange($event)" />
+        <span [class]="helperText" (click)="onInputFocus()">{{placeholder}}</span>
+        <input [(ngModel)]="value" (blur)="onBlur()" (focus)="onInputFocus()" [appFocus]="needsFocus" [(type)]="type" class="inline" (ngModelChange)="onChange($event)" />
         <span style="float:right;" class="icon-box">
             <span>
                 <fa-icon *ngIf="secret && type === 'text'"  (click)="changeInputType()" [icon]="faEye"></fa-icon>

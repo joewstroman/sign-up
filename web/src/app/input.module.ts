@@ -7,10 +7,12 @@ import { InputComponent } from './input.component';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { SignUpService } from './app.service';
+import { FocusDirective } from './focus.directive';
 
 @NgModule({
   declarations: [
-    InputComponent
+    InputComponent,
+    FocusDirective
   ],
   imports: [
     CommonModule,
