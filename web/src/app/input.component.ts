@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { faDizzy, faSmileBeam } from '@fortawesome/free-regular-svg-icons';
+import { faDizzy, faEye, faEyeSlash, faSmileBeam } from '@fortawesome/free-regular-svg-icons';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { initialState, IAppState, UPDATE } from './store';
@@ -16,26 +16,37 @@ export class InputComponent implements OnInit {
     @Input() clear: Subject<void>;
     @Input() name: string;
     @Input() placeholder: string;
-    @Input() type: string;
+    @Input() secret: boolean;
     @Input() valid: boolean;
 
     @Input()
     validate: (value: string) => boolean;
 
-    value: any;
     faDizzy = faDizzy;
+    faEye = faEye;
+    faEyeSlash = faEyeSlash;
     faSmileBeam = faSmileBeam;
     store: Store<IAppState>;
+    type: string;
+    value: any;
 
     constructor(store: Store<IAppState>) {
         this.store = store;
+        console.log(this.type);
     }
 
     ngOnInit() {
+        console.log(this.type);
+        this.type = (this.secret) ? 'password' : 'text';
         this.clear.subscribe(() => {
             this.value = initialState[this.name];
             this.onChange(this.value);
         });
+    }
+
+    changeInputType() {
+        console.log(this.type);
+        this.type = (this.type === 'password') ? 'text' : 'password';
     }
 
     onChange(value: string) {

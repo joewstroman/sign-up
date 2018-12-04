@@ -1,7 +1,9 @@
 @import './app.component.scss';
 
 .icon-box {
-    position: relative;
+    position:absolute;
+    right: 0px;
+    width:48px;
 }
 
 input {
@@ -9,7 +11,7 @@ input {
     font-size:18px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    width: 90%;
+    width: 87%;
 }
 
 input:focus {
@@ -27,6 +29,6 @@ input:focus {
 }
 
 fa-icon {
-    position: absolute;
-    right: 0px;
+    float:right;
+    margin-left: 3px;
 }

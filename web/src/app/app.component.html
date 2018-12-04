@@ -23,9 +23,9 @@
         <div>
           <app-input (update)="register($event)" [clear]="clear" name="email" placeholder="Email" [validate]="validateEmail"></app-input>
         </div>
-        <app-input (update)="register($event)" [clear]="clear" name="password" placeholder="Password" [validate]="validateName" type="password"></app-input>
+        <app-input (update)="register($event)" [clear]="clear" name="password" placeholder="Password" [validate]="validateName" [secret]="true"></app-input>
         <div>
-          <app-input (update)="register($event)" [clear]="clear" name="confirmation" placeholder="Confirm Password" [validate]="confirmPassword.bind(this)" type="password"></app-input>
+          <app-input (update)="register($event)" [clear]="clear" name="confirmation" placeholder="Confirm Password" [validate]="confirmPassword.bind(this)" [secret]="true"></app-input>
         </div>
         <div style="margin-top:25px;">
           <input [(ngModel)]="tos" (ngModelChange)="validateTOS($event)" class="inline box" type="checkbox">

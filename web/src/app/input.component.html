@@ -1,9 +1,15 @@
 <span style="position:relative;">
     <span class="input-wrapper">
-        <input [(ngModel)]="value" [type]="type" class="inline" [placeholder]="placeholder" (ngModelChange)="onChange($event)" />
-        <span style="float:right;position:relative;" class="icon-box" *ngIf="value && value.length > 0">
-            <fa-icon *ngIf="validate(value)" [icon]="faSmileBeam"></fa-icon>
-            <fa-icon *ngIf="!validate(value)" [icon]="faDizzy"></fa-icon>
+        <input [(ngModel)]="value" [(type)]="type" class="inline" [placeholder]="placeholder" (ngModelChange)="onChange($event)" />
+        <span style="float:right;" class="icon-box">
+            <span>
+                <fa-icon *ngIf="secret && type === 'text'"  (click)="changeInputType()" [icon]="faEye"></fa-icon>
+                <fa-icon *ngIf="secret && type === 'password'" (click)="changeInputType()" [icon]="faEyeSlash"></fa-icon>
+            </span>
+            <span *ngIf="value && value.length > 0">
+                <fa-icon *ngIf="validate(value)" [icon]="faSmileBeam"></fa-icon>
+                <fa-icon *ngIf="!validate(value)" [icon]="faDizzy"></fa-icon>
+            </span>
         </span>
     </span>
 </span>
