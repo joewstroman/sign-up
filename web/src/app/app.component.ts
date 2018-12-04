@@ -26,7 +26,6 @@ export class AppComponent {
 
     state$.subscribe( (state: IAppState) => {
       this.password = state.password;
-      console.log(state);
     });
 
     Object.keys(initialState).map( (name: string) => {
@@ -51,6 +50,7 @@ export class AppComponent {
 
   confirmPassword(value: string) {
     return value === this.password;
+    // return this.validatePassword(value) && value === this.password;
   }
 
   register({name, valid}: {name: string, valid: boolean} ) {
@@ -66,6 +66,30 @@ export class AppComponent {
 
   validateName(name: string) {
     return (name === undefined) ? false : name.length > 0;
+  }
+
+  validatePassword(pass: string) {
+    if (pass.length < 6) {
+      console.log('too short');
+      return false;
+    }
+
+    if (!pass.match(/\d/)) {
+      console.log('no number');
+      return false;
+    }
+
+    if (!pass.match(/[A-Z]/)) {
+      console.log('no uppercase');
+      return false;
+    }
+
+    if (!pass.match(/[\W_]/)) {
+      console.log('no special');
+      return false;
+    }
+
+    return true;
   }
 
   validateTOS(checked: any) {

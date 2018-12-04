@@ -13,19 +13,19 @@
         </div>
         <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <app-input (update)="register($event)" [clear]="clear" name="name" placeholder="First Name" [validate]="validateName"></app-input>
+              <app-input (update)="register($event)" [clear]="clear" name="name" placeholder="FIRST NAME" [valid]="propertyIsValid['name']" [validate]="validateName"></app-input>
             </div>
             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-              <app-input (update)="register($event)" [clear]="clear" name="surname" placeholder="Last Name" [validate]="validateName"></app-input>
+              <app-input (update)="register($event)" [clear]="clear" name="surname" placeholder="LAST NAME" [valid]="propertyIsValid['surname']" [validate]="validateName"></app-input>
             </div>
         </div>
-        <app-input (update)="register($event)" [clear]="clear" name="company" placeholder="Company Name" [validate]="validateName"></app-input>
+        <app-input (update)="register($event)" [clear]="clear" name="company" placeholder="COMPANY NAME" [valid]="propertyIsValid['company']" [validate]="validateName"></app-input>
         <div>
-          <app-input (update)="register($event)" [clear]="clear" name="email" placeholder="Email" [validate]="validateEmail"></app-input>
+          <app-input (update)="register($event)" [clear]="clear" name="email" placeholder="EMAIL" [valid]="propertyIsValid['email']" [validate]="validateEmail"></app-input>
         </div>
-        <app-input (update)="register($event)" [clear]="clear" name="password" placeholder="Password" [validate]="validateName" [secret]="true"></app-input>
+        <app-input (update)="register($event)" [clear]="clear" name="password" placeholder="PASSWORD" [valid]="propertyIsValid['password']" [validate]="validatePassword" [secret]="true"></app-input>
         <div>
-          <app-input (update)="register($event)" [clear]="clear" name="confirmation" placeholder="Confirm Password" [validate]="confirmPassword.bind(this)" [secret]="true"></app-input>
+          <app-input (update)="register($event)" [clear]="clear" name="confirmation" placeholder="CONFIRM PASSWORD" [valid]="propertyIsValid['confirmation']" [validate]="confirmPassword.bind(this)" [secret]="true"></app-input>
         </div>
         <div style="margin-top:25px;">
           <input [(ngModel)]="tos" (ngModelChange)="validateTOS($event)" class="inline box" type="checkbox">

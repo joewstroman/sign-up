@@ -35,6 +35,11 @@ namespace sign_up
 
             services.Configure<JWTSettings>(Configuration.GetSection("JWTSettings"));
             services.AddMvc();
+
+            services.AddCors(opt => opt.AddPolicy("AllowSpecificOrigin",
+                builder => builder.WithOrigins("http://localhost:4200")
+                                  .WithHeaders("content-type")
+                                  .WithMethods("POST")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -52,6 +57,7 @@ namespace sign_up
             }
 
             app.UseStaticFiles();
+            app.UseCors("AllowSpecificOrigin");
 
             app.UseMvc(routes =>
             {
