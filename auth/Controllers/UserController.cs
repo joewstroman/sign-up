@@ -15,12 +15,6 @@ namespace sign_up.Controllers
     public UserController(UserInfoContext context)
     {
       _context = context;
-
-      // if (_context.UserInfo.Count() == 0)
-      // {
-      //   _context.UserInfo.Add(new UserInfo { Email = "test" });
-      //   _context.SaveChanges();
-      // }
     }     
 
     [HttpGet]
