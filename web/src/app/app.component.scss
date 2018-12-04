@@ -28,6 +28,10 @@ div {
     width:16px;
 }
 
+.cancel {
+    cursor: pointer;
+}
+
 .header {
     @include text;
     font-size: 36px;

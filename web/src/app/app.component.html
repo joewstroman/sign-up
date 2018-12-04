@@ -29,11 +29,11 @@
         </div>
         <div style="margin-top:25px;">
           <input [(ngModel)]="tos" (ngModelChange)="validateTOS($event)" class="inline box" type="checkbox">
-          <span>I agree to the terms of service</span>
+          <span style="margin-left:5px;">I agree to the terms of service</span>
         </div>
         <div style="margin-top:49px;">
           <app-submit [stateIsValid]="stateIsValid"></app-submit>
-          <span (click)="cancel()">Cancel</span>
+          <span class="cancel" (click)="cancel()">Cancel</span>
         </div>
       </div>
     </div>

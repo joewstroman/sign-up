@@ -14,10 +14,11 @@
     margin-right: 14px;
     text-align: center;
     width: 158px;
+    cursor: pointer;
 }
 
 .disabled {
     background-color: #bdbebf;
     color: #6b6b6b;
-    // border: 1px solid #bdbebf;
+    cursor: default;
 }
