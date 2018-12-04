@@ -42,6 +42,7 @@ export class InputComponent implements OnInit {
         this.clear.subscribe(() => {
             this.value = initialState[this.name];
             this.onChange(this.value);
+            this.onBlur();
         });
     }
 
